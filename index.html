@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LambertDev Site</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/free")
+ 
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">Christopher Lambert</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Currículo</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">Sobre</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Contatos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container" id="maincontent" tabindex="-1">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive" src="~/img/perfil_icon.png" alt="">
+                    <div class="intro-text">
+                        <h1 class="name">Christopher Lambert</h1>
+                        <hr class="star-light">
+                        <span class="skills">Developer Web/Moblie/Desktop - C# FullStack - Java - C/C++</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sobre -->
+    <section class="success" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Sobre</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    <p>Programador Web/Moblie e Desktop com experiencia na area de Visão Computacional,Software para industria de Alimentos e empresas de TEF(Transferencia Eletronica de Fundos).</p>
+                </div>
+                <div class="col-lg-4">
+                    <p>Cursando Quinto Ano de Engenharia da Computação.Fiz Projetos em Varias Linguagens como C/C++,Java VB.NET e principalmente C#</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/free")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderBody()
+
+    <footer>
+        <p>&copy; @DateTime.Now.Year MY Site</p>
+    </footer>
+</body>
+</html>
