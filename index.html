@@ -6,8 +6,11 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Freelancer - Start Bootstrap Theme</title>
+
         <!-- Font Awesome icons (free version)-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
+        <!-- Helpers Js -->
+        <script src="js/helpers.js"></script>
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet">
         <!-- Fonts CSS-->
@@ -26,6 +29,8 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">ABOUT</a>
                         </li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">CONTACT</a>
+                        </li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger">TIPS JS</a>
                         </li>
                     </ul>
                 </div>
@@ -361,7 +366,15 @@
         <script src="js/scripts.js"></script>
 		
 		<script>
-			console.log("Desenvolvido por Christopher Lambert");
+            console.log("Desenvolvido por Christopher Lambert");
+            var language = "en-GB";
+
+            $(document).ready(function() {
+                var languageTemp = getLanguage();
+                if(languageTemp.includes("pt")){
+                    language = languageTemp;
+                }
+            });
 		</script>
     </body>
 	<!-- https://startbootstrap.com/previews/freelancer/ Exemplo da onde ter pegado -->
