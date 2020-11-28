@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>KEY FRAMES</title>
+    <meta charset="utf-8">
+
+    <style>
+        @keyframes mymove {
+            from {
+                background-color: red;
+            }
+
+            to {
+                background-color:blue;
+            }
+        }
+        #circulo1 {
+            /* para o circulo ser perfeito, ele tem que ser um quadrado
+            caso contrario acabariamos formando uma elipse */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            animation: mymove 5s infinite;
+        }
+    </style>
+
+  </head>
+  <body>
+    <div id="circulo1"> </div>
+  </body>
+</html>
