@@ -5,5 +5,7 @@ function getLanguage(){
 
 function loadSections(){
     $("#portfolio").load("html/sections/sportifolio.html");
+    $("#about").load("html/sections/sabout.html");
+    $("#contact").load("html/sections/scontacts.html");
 }
 
