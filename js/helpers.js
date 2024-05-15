@@ -8,6 +8,7 @@ function loadSections(){
     $("#about").load("html/sections/sabout.html");
     $("#contact").load("html/sections/scontacts.html");
     $("#resume").load("html/sections/sresume.html");
+    $("#web3").load("html/sections/sweb3.html");
 }
 
 function printPdf (data , title ) {

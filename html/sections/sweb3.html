@@ -1,0 +1,25 @@
+<div class="container">
+  <!-- About Section Heading-->
+  <div class="text-center">
+      <h2 class="page-section-heading d-inline-block text-white"> WEB3 </h2>
+  </div>
+  <!-- Icon Divider-->
+  <div class="divider-custom divider-light">
+      <div class="divider-custom-line"></div>
+      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+      <div class="divider-custom-line"></div>
+  </div>
+   <!-- About Section Content-->
+  <div class="row">
+      <div class="col-lg-4 ml-auto">
+          <p class="pre-wrap lead">ETH/USD </p>
+      </div>
+      <div class="col-lg-4 mr-auto">
+          <p class="pre-wrap lead" id="priceETH">  </p>
+      </div>
+  </div>
+    <script>
+        var price = getPrice();
+        $('#priceETH').text(price);
+    </script>
+</div>
