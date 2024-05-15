@@ -12,7 +12,8 @@ const web3 = new Web3(new Web3.providers.HttpProvider(infuraURL));
 const contractAddress = '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419';
 
 // Carregando a ABI do contrato a partir de um arquivo JSON
-$.getJSON('contract/abiethusd.json', function(data) {
+$.getJSON('https://api.etherscan.io/api?module=contract&action=getabi&address=0xdeb288F737066589598e9214E782fa5A8eD689e8'
+, function(data) {
     const contractABI = data;
 
     // Criando a instância do contrato Chainlink Oracle
