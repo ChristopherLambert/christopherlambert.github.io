@@ -29,7 +29,18 @@ $.getJSON('../contract/abiethusd.json', function(data) {
             return 0;
         }
     }
-
-    // Chamando a função para obter o preço atual
-    getPrice();
+    
+    async function updatePrice() {
+        try {
+            // Chamando a função para obter o preço atual
+            const price = await getPrice();
+            // Atualizando o elemento HTML com o preço obtido
+            $('#priceETH').text(price);
+        } catch (error) {
+            console.error('Erro ao atualizar o preço:', error);
+            $('#priceETH').text('Erro ao atualizar o preço');
+        }
+    }
+    // Chamando a função para atualizar o preço
+    updatePrice().catch(error => console.error('Erro ao atualizar o preço:', error));
 });
