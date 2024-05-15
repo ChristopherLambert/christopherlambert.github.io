@@ -12,7 +12,7 @@ const web3 = new Web3(new Web3.providers.HttpProvider(infuraURL));
 
 // CHAINLINK
 // Endereço do contrato do Chainlink Oracle para ETH/USD na testnet Ropsten
-const contractAddress = 'CONTRATO_CHAINLINK_ETHUSD_ROPSTEN';
+const contractAddress = '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419';
 const contract = new web3.eth.Contract(contractABI, contractAddress);
 
 // Função para obter o preço atual do ETH/USD
