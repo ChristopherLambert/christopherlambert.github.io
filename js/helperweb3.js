@@ -12,7 +12,7 @@ const web3 = new Web3(new Web3.providers.HttpProvider(infuraURL));
 const contractAddress = '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419';
 
 // Carregando a ABI do contrato a partir de um arquivo JSON
-$.getJSON('../contract/abiethusd.json', function(data) {
+$.getJSON('contract/abiethusd.json', function(data) {
     const contractABI = data;
 
     // Criando a instância do contrato Chainlink Oracle
@@ -29,7 +29,7 @@ $.getJSON('../contract/abiethusd.json', function(data) {
             return 0;
         }
     }
-    
+
     async function updatePrice() {
         try {
             // Chamando a função para obter o preço atual
