@@ -10,19 +10,26 @@ const web3 = new Web3(new Web3.providers.HttpProvider(infuraURL));
 // CHAINLINK
 // Endereço do contrato do Chainlink Oracle para ETH/USD na testnet Ropsten
 const contractAddress = '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419';
-const contract = new web3.eth.Contract(contractABI, contractAddress);
 
-// Função para obter o preço atual do ETH/USD
-async function getPrice() {
-    try {
-        const price = await contract.methods.latestAnswer().call();
-        console.log('Preço atual do ETH/USD:', web3.utils.fromWei(price, 'ether'));
-        return price;
-    } catch (error) {
-        console.error('Erro ao obter o preço do ETH/USD:', error);
-        return 0;
+// Carregando a ABI do contrato a partir de um arquivo JSON
+$.getJSON('../contract/abiethusd.json', function(data) {
+    const contractABI = data;
+
+    // Criando a instância do contrato Chainlink Oracle
+    const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+    // Função para obter o preço atual do ETH/USD
+    async function getPrice() {
+        try {
+            const price = await contract.methods.latestAnswer().call();
+            console.log('Preço atual do ETH/USD:', web3.utils.fromWei(price, 'ether'));
+            return price;
+        } catch (error) {
+            console.error('Erro ao obter o preço do ETH/USD:', error);
+            return 0;
+        }
     }
-}
 
-// Chamando a função para obter o preço atual
-getPrice();
+    // Chamando a função para obter o preço atual
+    getPrice();
+});
