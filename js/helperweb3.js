@@ -1,5 +1,5 @@
 // Importando a biblioteca Web3.js
-const Web3 = require('web3');
+<script src="https://cdn.jsdelivr.net/npm/web3@1.3.5/dist/web3.min.js"></script>
 
 // Substitua 'SUA_CHAVE_API' pela sua chave de API do Infura
 const infuraKey = '2ce64e18898e437b90f1e16843638e07';
