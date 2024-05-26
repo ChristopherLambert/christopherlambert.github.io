@@ -1,21 +1,23 @@
 <div class="container">
-  <!-- About Section Heading-->
-  <div class="text-center">
-      <h2 class="page-section-heading d-inline-block text-white"> WEB3 </h2>
-  </div>
-  <!-- Icon Divider-->
-  <div class="divider-custom divider-light">
-      <div class="divider-custom-line"></div>
-      <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-      <div class="divider-custom-line"></div>
-  </div>
-   <!-- About Section Content-->
-  <div class="row">
-      <div class="col-lg-4 ml-auto">
-          <p class="pre-wrap lead">ETH/USD </p>
-      </div>
-      <div class="col-lg-4 mr-auto">
-          <p class="pre-wrap lead" id="priceETH">  </p>
-      </div>
-  </div>
+  <ul id=menu>
+    <li><a id="price"> CHAINLINK PRICES:</a>
+    <li><a id="priceETHUSD"></a>
+    <li><a id="priceBTCUSD"></a>
+  </ul>
+
+  <style>
+    #menu {
+        position: fixed;
+        right: 0;
+        top: 20%;
+        min-width: 8em;
+        margin-top: -2.5em;
+        
+        color: white;
+        box-shadow: 0 1px 3px black;
+        background: #212529;
+        margin-right: 2px;
+        border-radius: 3em 0.5em 0.5em 3em;
+    }
+  </style>
 </div>
