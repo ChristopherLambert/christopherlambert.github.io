@@ -103,10 +103,13 @@ async function updatePrice() {
     }
 }
 
-setInterval(
-    // Chamando a função para atualizar o preço
-    updatePrice()
-        .catch(error => console.error('Erro ao atualizar o preço:', error))
-, 10000); // 10 segundos
+updatePrice()
+    .catch(error => console.error('Erro ao atualizar o preço:', error))
+
+// setInterval(
+//     // Chamando a função para atualizar o preço
+//     updatePrice()
+//         .catch(error => console.error('Erro ao atualizar o preço:', error))
+// , 10000); // 10 segundos
 
 
