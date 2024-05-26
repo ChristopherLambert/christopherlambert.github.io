@@ -16,6 +16,7 @@ const web3 = new Web3(new Web3.providers.HttpProvider(infuraURL));
 
 const contractAddressETHUSD = '0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419';
 const contractAddressBTCUSD = '0xF4030086522a5bEEa4988F8cA5B36dbC97BeE88c';
+const contractAddressLINKUSD = '0x396c5E36DD0a0F5a5D33dae44368D4193f69a1F0';
 
 // Definindo a ABI do contrato
 const contractABI = [
@@ -52,6 +53,7 @@ const contractABI = [
 // Criando a instância do contrato Chainlink Oracle
 const contractETH = new web3.eth.Contract(contractABI, contractAddressETHUSD);
 const contractBTC = new web3.eth.Contract(contractABI, contractAddressBTCUSD);
+const contractLINK = new web3.eth.Contract(contractABI, contractAddressLINKUSD);
 
 // Função para obter o preço atual do ETH/USD
 async function getPriceETH() {
@@ -67,25 +69,34 @@ async function getPriceETH() {
 async function getPriceBTC() {
     try {
         const price = await contractBTC.methods.latestAnswer().call();
-        console.log('Preço atual do ETH/USD:', web3.utils.fromWei(price, 'ether'));
+        console.log('Preço atual do BTC/USD:', web3.utils.fromWei(price, 'ether'));
         return price;
     } catch (error) {
-        console.error('Erro ao obter o preço do ETH/USD:', error);
+        console.error('Erro ao obter o preço do BTC/USD:', error);
+        return 0;
+    }
+}
+async function getPriceLINK() {
+    try {
+        const price = await contractLINK.methods.latestAnswer().call();
+        console.log('Preço atual do LINK/USD:', web3.utils.fromWei(price, 'ether'));
+        return price;
+    } catch (error) {
+        console.error('Erro ao obter o preço do LINK/USD:', error);
         return 0;
     }
 }
 
 async function updatePrice() {
     try {
-        // Chamando a função para obter o preço atual
         const priceETH = Math.trunc((await getPriceETH() / 1e8) * 100) / 100
-        // Atualizando o elemento HTML com o preço obtido
         $('#priceETHUSD').text("ETH/USD = " + priceETH + "$ ");
 
-        // Chamando a função para obter o preço atual
         const priceBTC = Math.trunc((await getPriceBTC() / 1e8) * 100) / 100
-        // Atualizando o elemento HTML com o preço obtido
         $('#priceBTCUSD').text("BTC/USD = " + priceBTC + "$ ");
+
+        // const priceLINK = Math.trunc((await getPriceLINK() / 1e8) * 100) / 100
+        // $('#priceLINKUSD').text("LINK/USD = " + priceLINK + "$ ");
     } catch (error) {
         console.error('Erro ao atualizar o preço:', error);
         // $('#priceETH').text('Erro ao atualizar o preço');
