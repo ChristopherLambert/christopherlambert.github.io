@@ -24,11 +24,33 @@
   </style>
   <script>
     $("#newButton").click(function() {
+      // Swal.fire({
+      //   title: "The Internet?",
+      //   text: "That thing is still around?",
+      //   icon: "question"
+      // });
+
       Swal.fire({
-        title: "The Internet?",
-        text: "That thing is still around?",
-        icon: "question"
-      });
+                title: 'Send Transaction',
+                html:
+                    '<input id="input1" class="swal2-input" placeholder="Input 1">' +
+                    '<input id="input2" class="swal2-input" placeholder="Input 2">',
+                showCancelButton: true,
+                confirmButtonText: 'Submit',
+                preConfirm: () => {
+                    return [
+                        document.getElementById('input1').value,
+                        document.getElementById('input2').value
+                    ]
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Aqui você pode fazer algo com os valores dos inputs
+                    const inputValues = result.value;
+                    console.log("Input 1:", inputValues[0]);
+                    console.log("Input 2:", inputValues[1]);
+                }
+            });
      });
   </script>
 </div>
