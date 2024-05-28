@@ -4,6 +4,7 @@
     <li><a id="priceETHUSD"></a>
     <li><a id="priceBTCUSD"></a>
     <!-- <li><a id="priceLINKUSD"></a> -->
+    <li><button id="newButton">Send Transaction</button></li>
   </ul>
 
   <style>
@@ -21,4 +22,13 @@
         border-radius: 3em 0.5em 0.5em 3em;
     }
   </style>
+  <script>
+    $("#newButton").click(function() {
+      Swal.fire({
+        title: "The Internet?",
+        text: "That thing is still around?",
+        icon: "question"
+      });
+     });
+  </script>
 </div>
