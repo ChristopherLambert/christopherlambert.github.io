@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog do Christopher Lambert</title>
+
+    <!-- Bibliotecas JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        /* STYLE MKD */
+        .markdown {
+            white-space: pre-wrap;
+        }
+        .code-block {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        h3 {
+            margin-bottom: -0.5em; 
+            margin-top: 0.1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Blog do Christopher Lambert</h1>
+    </div>
+
+    <div class="container">
+        <div class="markdown" id="markdown-content">
+            <!-- O conteúdo em Markdown será renderizado aqui -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const markdownContent = `
+### Bem vindo ao meu blog:
+
+Meu nome é Christopher Lambert, há sete(10) anos estudo e trabalho na área de computação, sou 💻 Engenheiro da Computação formado pela Universidade Positivo (Curitiba-PR-Brasil). Fiz Pós em Segurança da Informação pela IPOG (Curitiba-PR-Brasil). Trabalhando com desenvolvimento de software e hardware em várias empresas e startups, como Engenheiro e Desenvolvedor de Software.
+
+Trabalhando principalmente com C#, 🙈 Xamarin, ASPNET, Angular, SQLServer, etc... desenvolvendo softwares 📳 Mobile, WEB, ERP, WMS , softwares de cliente/servidor, visão computacional com o Emgu.CV(wrapper do Open.CV para C#), multicast, softwares de monitoramento, 🤖 RPA (Robotic Process Automation) alguns jogos entre outros.
+
+Sempre em busca de novos desafios, visando o desenvolvimento da minha carreira, gerando de resultados, para possibilitar crescimento qualitativo e quantitativo para os envolvidos. Agradeço a atenção e coloco-me ao inteiro dispor para contato pesso.
+
+### Linqs uteis do Blog
+[ETH JS vs WEB JS: Uma Comparação Detalhada](ethervsweb3.html)
+\`\`\`
+
+     `;
+
+            // Converte Markdown para HTML
+            const htmlContent = marked.parse(markdownContent);
+            // Insere o HTML no div
+            document.getElementById("markdown-content").innerHTML = htmlContent;
+
+            // Inicializa o Highlight.js
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+
+</body>
+</html>
