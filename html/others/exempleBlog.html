@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Estilo Markdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .markdown {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Meu Blog em Markdown</h1>
+    </div>
+
+    <div class="container">
+        <div class="markdown" id="markdown-content">
+            <!-- O conteúdo em Markdown será renderizado aqui -->
+        </div>
+    </div>
+
+    <!-- Bibliotecas JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const markdownContent = `
+# Bem-vindo ao Meu Blog
+
+Este é um exemplo de blog utilizando **Markdown** para formatar o conteúdo.
+
+## Seção 1: Introdução
+
+Markdown é uma linguagem de marcação leve que você pode usar para adicionar formatação aos documentos de texto simples.
+
+### Exemplo de código:
+
+\`\`\`javascript
+function helloWorld() {
+    console.log("Hello, world!");
+}
+\`\`\`
+
+Você pode incluir listas:
+
+- Item 1
+- Item 2
+- Item 3
+
+Ou links: [Google](https://www.google.com)
+
+## Seção 2: Conclusão
+
+Este é um exemplo simples, mas você pode expandi-lo para criar um blog completo com Markdown e HTML!
+            `;
+
+            // Converte Markdown para HTML
+            // const htmlContent = marked(markdownContent);
+            const htmlContent = marked.parse(markdownContent);
+            // Insere o HTML no div
+            document.getElementById("markdown-content").innerHTML = htmlContent;
+        });
+    </script>
+
+</body>
+</html>

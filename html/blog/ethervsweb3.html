@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETHER.JS VS WEB.JS</title>
+
+    <!-- Bibliotecas JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .markdown {
+            white-space: pre-wrap;
+        }
+        .code-block {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ETHER.JS VS WEB.JS</h1>
+    </div>
+
+    <div class="container">
+        <div class="markdown" id="markdown-content">
+            <!-- O conteúdo em Markdown será renderizado aqui -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const markdownContent = `
+# Bem-vindo ao Meu Blog
+
+Este é um exemplo de blog utilizando **Markdown** para formatar o conteúdo.
+
+### Exemplo de código WEB.JS:
+
+\`\`\`javascript
+const Web3 = require("web3");
+
+async function getBalance() {
+  // Conecte-se a um provedor (por exemplo, Infura, Alchemy, ou mesmo um nó local)
+  const web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID"));
+  // O endereço da conta que você deseja verificar o saldo
+  const address = "0xYourEthereumAddress";
+  // Obtenha o saldo
+  const balance = await web3.eth.getBalance(address);
+  // Converta o saldo de Wei para Ether
+  const balanceInEth = web3.utils.fromWei(balance, "ether");
+
+  console.log("Saldo de " + address + ": " + balanceInEth + " ETH");
+}
+getBalance();
+\`\`\`
+
+### Exemplo de código ETHER.JS:
+
+\`\`\`javascript
+const { ethers } = require("ethers");
+
+async function getBalance() {
+  // Conecte-se a um provedor (por exemplo, Infura, Alchemy, ou mesmo um nó local)
+  const provider = new ethers.providers.InfuraProvider("mainnet", "YOUR_INFURA_PROJECT_ID");
+  // O endereço da conta que você deseja verificar o saldo
+  const address = "0xYourEthereumAddress";
+  // Obtenha o saldo
+  const balance = await provider.getBalance(address);
+  // Converta o saldo de Wei para Ether
+  const balanceInEth = ethers.utils.formatEther(balance);
+
+  console.log("Saldo de " + address + ": " + balanceInEth + " ETH");
+}
+getBalance();
+\`\`\`
+
+     `;
+
+            // Converte Markdown para HTML
+            const htmlContent = marked.parse(markdownContent);
+            // Insere o HTML no div
+            document.getElementById("markdown-content").innerHTML = htmlContent;
+
+            // Inicializa o Highlight.js
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+
+</body>
+</html>
