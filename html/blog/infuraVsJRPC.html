@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog do Christopher Lambert</title>
+    <title>INFURA VS JSON RPC</title>
 
     <!-- Bibliotecas JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -42,11 +42,18 @@
             margin-bottom: -0.5em; 
             margin-top: 0.1rem;
         }
+
+        p {
+            margin-bottom: -10px;
+        }
+        ol {
+            margin-top: -10px;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Blog do Christopher Lambert</h1>
+        <h1>INFURA VS JSON RPC</h1>
     </div>
 
     <div class="container">
@@ -54,24 +61,25 @@
             <!-- O conteúdo em Markdown será renderizado aqui -->
         </div>
     </div>
-
+3
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const markdownContent = `
-### Bem vindo ao meu blog:
+### INFURA VS JSON RPC
+**INFURA:** Ideal para desenvolvedores e empresas que desejam rapidez na implementação sem se preocupar
+com a manuteção da infraestrutura de nós.(NO ONLINE). E particularmente  ́util para projetos que 
+precisam de alta disponibilidade e confiabilidade desde o início.
 
-Meu nome é Christopher Lambert, há sete(10) anos estudo e trabalho na área de computação, sou 💻 Engenheiro da Computação formado pela Universidade Positivo (Curitiba-PR-Brasil). Fiz Pós em Segurança da Informação pela IPOG (Curitiba-PR-Brasil). Trabalhando com desenvolvimento de software e hardware em várias empresas e startups, como Engenheiro e Desenvolvedor de Software.
+**JSON-RPC:** Melhor para desenvolvedores que querem mais controle sobre seu ambiente, preferem operar
+de maneira mais descentralizada, ou têm preocupa ̧acões específicas de seguran ̧ca e privacidade que exigem
+a operção de seus próprios nós. (NO LOCAL – Seu Proprio NÓ)´
 
-Trabalhando principalmente com C#, 🙈 Xamarin, ASPNET, Angular, SQLServer, etc... desenvolvendo softwares 📳 Mobile, WEB, ERP, WMS , softwares de cliente/servidor, visão computacional com o Emgu.CV(wrapper do Open.CV para C#), multicast, softwares de monitoramento, 🤖 RPA (Robotic Process Automation) alguns jogos entre outros.
+**CLIENTES QUE USAM JSON-RPC:**
+1. **GETH** – Um dos mais famosos.
+2. **Parity** (agora conhecido como OpenEthereum)
+3. **Nethermind**
 
-Sempre em busca de novos desafios, visando o desenvolvimento da minha carreira, gerando de resultados, para possibilitar crescimento qualitativo e quantitativo para os envolvidos. Agradeço a atenção e coloco-me ao inteiro dispor para contato pesso.
-
-### WEB3 -- Linqs uteis do Blog 
-[INFURA VS JSON RPC: Protocols](infuraVsJRPC.html)
-[ETH JS vs WEB JS: Uma Comparação Detalhada](ethervsweb3.html)
-\`\`\`
-
-     `;
+`;
 
             // Converte Markdown para HTML
             const htmlContent = marked.parse(markdownContent);
