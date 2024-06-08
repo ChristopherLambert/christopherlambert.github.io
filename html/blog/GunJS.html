@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog do Christopher Lambert</title>
+    <title>GUN JS</title>
 
     <!-- Bibliotecas JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>Blog do Christopher Lambert</h1>
+        <h1>GUN JS Real Time Database</h1>
     </div>
 
     <div class="container">
@@ -21,25 +21,25 @@
             <!-- O conteúdo em Markdown será renderizado aqui -->
         </div>
     </div>
-
+3
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const markdownContent = `
-### Bem vindo ao meu blog:
+### GUN JS Real Time Database
+**GUN.JS:**  Biblioteca JavaScript de banco de dados em tempo real que facilita a criação de aplicativos
+descentralizados, colaborativos e de alta performance.
 
-Meu nome é Christopher Lambert, há sete(10) anos estudo e trabalho na área de computação, sou 💻 Engenheiro da Computação formado pela Universidade Positivo (Curitiba-PR-Brasil). Fiz Pós em Segurança da Informação pela IPOG (Curitiba-PR-Brasil). Trabalhando com desenvolvimento de software e hardware em várias empresas e startups, como Engenheiro e Desenvolvedor de Software.
+**Componentes:**
+1. **Peer-To-Peer(p2p)**
+2. **Graph Database** – (Banco de Dados em Grafo): O Gun.js  ́e uma biblioteca de banco de dados em grafo
+descentralizado, onde os dados s ̃ao armazenados e manipulados como um grafo. Isso significa que os
+dados são representados como n ́os (nodes) e arestas (edges), permitindo uma estrutura de dados
+flex ́ıvel e altamente conectada.
+3. **SEA:** Significa ”Secure Ecies Asymmetric”, é um módulo do Gun.js que fornece funcionalidades de criptografia para garantir a segurança das informacões transmitidas e armazenadas no Gun.js. 
+A criptografia do Gun.js é baseada no algoritmo **ECIES (Elliptic Curve Integrated Encryption** Scheme), que utiliza curvas elípticas para fornecer seguran ̧ca e eficiência na criptografia assimétrica. 
+Isso permite que os dados sejam criptografados usando uma chave pública e depois descriptografados usando a chave privada correspondente.
 
-Trabalhando principalmente com C#, 🙈 Xamarin, ASPNET, Angular, SQLServer, etc... desenvolvendo softwares 📳 Mobile, WEB, ERP, WMS , softwares de cliente/servidor, visão computacional com o Emgu.CV(wrapper do Open.CV para C#), multicast, softwares de monitoramento, 🤖 RPA (Robotic Process Automation) alguns jogos entre outros.
-
-Sempre em busca de novos desafios, visando o desenvolvimento da minha carreira, gerando de resultados, para possibilitar crescimento qualitativo e quantitativo para os envolvidos. Agradeço a atenção e coloco-me ao inteiro dispor para contato pesso.
-
-### WEB3 -- Linqs uteis do Blog 
-[INFURA VS JSON RPC: Protocols](infuraVsJRPC.html)
-[ETH JS vs WEB JS: Uma Comparação Detalhada](ethervsweb3.html)
-[GUN JS Real Time Database](GunJS.html)
-\`\`\`
-
-     `;
+`;
 
             // Converte Markdown para HTML
             const htmlContent = marked.parse(markdownContent);
