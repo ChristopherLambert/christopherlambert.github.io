@@ -6,10 +6,12 @@
     <title>Blog do Christopher Lambert</title>
 
     <!-- Bibliotecas JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <link rel="stylesheet" href="../../css/blog.css">
+    <link rel="stylesheet" href="../../css/blog/blog_main.css">
+    <link rel="stylesheet" href="../../css/blog/blog_menu.css">
 </head>
 <body>
     <div class="header">
@@ -20,9 +22,10 @@
         <div class="markdown" id="markdown-content">
             <!-- O conteúdo em Markdown será renderizado aqui -->
         </div>
+        <div id="menu_rigth"></div>
     </div>
-
     <script>
+        $("#menu_rigth").load("blogMenu.html");
         document.addEventListener("DOMContentLoaded", function() {
             const markdownContent = `
 ### Bem vindo ao meu blog:
