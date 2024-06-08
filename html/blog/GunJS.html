@@ -30,14 +30,59 @@
 descentralizados, colaborativos e de alta performance.
 
 **Componentes:**
-1. **Peer-To-Peer(p2p)**
-2. **Graph Database** – (Banco de Dados em Grafo): O Gun.js  ́e uma biblioteca de banco de dados em grafo
-descentralizado, onde os dados s ̃ao armazenados e manipulados como um grafo. Isso significa que os
-dados são representados como n ́os (nodes) e arestas (edges), permitindo uma estrutura de dados
+1. **Peer-To-Peer(p2p)** GUN.js utiliza uma arquitetura peer-to-peer para comunicação direta entre os 
+nós da rede, garantindo escalabilidade e resiliência sem um ponto único de falha.
+2. **Graph Database** – (Banco de Dados em Grafo): O Gun.js é uma biblioteca de banco de dados em grafo
+descentralizado, onde os dados são armazenados e manipulados como um grafo. Isso significa que os
+dados são representados como nós (nodes) e arestas (edges), permitindo uma estrutura de dados
 flex ́ıvel e altamente conectada.
 3. **SEA:** Significa ”Secure Ecies Asymmetric”, é um módulo do Gun.js que fornece funcionalidades de criptografia para garantir a segurança das informacões transmitidas e armazenadas no Gun.js. 
-A criptografia do Gun.js é baseada no algoritmo **ECIES (Elliptic Curve Integrated Encryption** Scheme), que utiliza curvas elípticas para fornecer seguran ̧ca e eficiência na criptografia assimétrica. 
+A criptografia do Gun.js é baseada no algoritmo **ECIES (Elliptic Curve Integrated Encryption Scheme**), que utiliza curvas elípticas para fornecer seguran ̧ca e eficiência na criptografia assimétrica. 
 Isso permite que os dados sejam criptografados usando uma chave pública e depois descriptografados usando a chave privada correspondente.
+
+**Segue abaixo um exemplo simples para iniciar um chat descentralizado:**
+[https://cdn.jsdelivr.net/npm/gun/gun.js](https://cdn.jsdelivr.net/npm/gun/gun.js)
+
+\`\`\`javascript
+ // Inicialize o Gun.js com peers remotos
+ const gun = Gun({
+     peers: [
+         'https://gun-manhattan.herokuapp.com/gun' // Um peer público
+     ]
+ });
+
+ // Referência ao banco de dados de mensagens
+ const messages = gun.get('messages');
+ // Rastreador de mensagens exibidas
+ const displayedMessages = new Set();
+
+ // Função para adicionar uma nova mensagem
+ function sendMessage() {
+     const message = document.getElementById('message').value;
+     if (message.trim() === '') return;
+
+     messages.set({ text: message, timestamp: Date.now() });
+     document.getElementById('message').value = '';
+ }
+
+ // Função para exibir mensagens
+ function displayMessage(data, id) {
+     if (!data || !data.text || !data.timestamp || displayedMessages.has(id)) return; /
+     // Verifique se os dados são válidos e não repetidos
+
+     displayedMessages.add(id); // Marque a mensagem como exibida
+
+     const messagesDiv = document.getElementById('messages');
+     const messageDiv = document.createElement('div');
+     messageDiv.textContent = new Date(data.timestamp).toLocaleTimeString()}: data.text;
+
+     messagesDiv.appendChild(messageDiv);
+     messagesDiv.scrollTop = messagesDiv.scrollHeight;
+ }
+
+ // Escute novas mensagens
+ messages.map().once((data, id) => displayMessage(data, id));
+\`\`\`
 
 `;
 
