@@ -1,15 +1,3 @@
-body {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-.header {
-    background-color: #f8f8f8;
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
 #menu_rigth {
     max-width: 240px;
 }
