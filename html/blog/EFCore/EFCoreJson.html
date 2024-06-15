@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INFURA VS JSON RPC</title>
+    <title>EF Core 8 - Tips Json </title>
 
     <!-- Bibliotecas JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-    <link rel="stylesheet" href="../../css/blog/blog_main.css">
-    <link rel="stylesheet" href="../../css/blog/blog_menu.css">
+    <link rel="stylesheet" href="../../../css/blog/blog_main.css">
+    <link rel="stylesheet" href="../../../css/blog/blog_menu.css">
 </head>
 <body>
     <div class="header">
-        <h1>INFURA VS JSON RPC</h1>
+        <h1>EF Core 8 - Tips Json</h1>
     </div>
 
     <div class="container">
@@ -26,24 +26,31 @@
     </div>
 
     <script>
-         $("#menu_rigth").load("blogMenu.html");
+         $("#menu_rigth").load("../blogMenu.html");
         document.addEventListener("DOMContentLoaded", function() {
             const markdownContent = `
-### INFURA VS JSON RPC
-**INFURA:** Ideal para desenvolvedores e empresas que desejam rapidez na implementação sem se preocupar
-com a manuteção da infraestrutura de nós.(NO ONLINE). E particularmente  ́util para projetos que 
-precisam de alta disponibilidade e confiabilidade desde o início.
+### EF Core Json Manipulated Before
 
-**JSON-RPC:** Melhor para desenvolvedores que querem mais controle sobre seu ambiente, preferem operar
-de maneira mais descentralizada, ou têm preocupa ̧acões específicas de seguran ̧ca e privacidade que exigem
-a operção de seus próprios nós. (NO LOCAL – Seu Proprio NÓ)´
+Here is an example of how JSON manipulation was done in EF Core before version 8:
 
-**CLIENTES QUE USAM JSON-RPC:**
-1. **GETH** – Um dos mais famosos.
-2. **Parity** (agora conhecido como OpenEthereum)
-3. **Nethermind**
+\`\`\`csharp
+var users = dbContext.Users
+    .FromSqlRaw("SELECT * FROM Users WHERE JSON_VALUE(Data, '$.IsActive') = 'true'")
+    .ToList();
 
-`;
+\`\`\`
+
+### EF Core Json Manipulated Now
+
+Now, see how it is done in version 8 of EF Core, using \`EF.Functions.JsonValue\`:
+
+\`\`\`csharp
+var users = dbContext.Users
+    .Where(u => EF.Functions.JsonValue(u.Data, "$.IsActive") == "true")
+    .ToList();
+\`\`\`
+
+     `;
 
             // Converte Markdown para HTML
             const htmlContent = marked.parse(markdownContent);

@@ -26,6 +26,11 @@
     </div>
     <script>
         $("#menu_rigth").load("blogMenu.html");
+        // Adiciona um atraso para garantir que o conteúdo foi carregado
+        setTimeout(function() {
+            $('img[src="../../../assets/img/principalperfil.jpg"]').attr('src', '../../assets/img/principalperfil.jpg');
+        }, 500); // 500 milissegundos de atraso
+       
         document.addEventListener("DOMContentLoaded", function() {
             const markdownContent = `
 ### Bem vindo ao meu blog:
@@ -37,9 +42,12 @@ Trabalhando principalmente com C#, 🙈 Xamarin, ASPNET, Angular, SQLServer, etc
 Sempre em busca de novos desafios, visando o desenvolvimento da minha carreira, gerando de resultados, para possibilitar crescimento qualitativo e quantitativo para os envolvidos. Agradeço a atenção e coloco-me ao inteiro dispor para contato pesso.
 
 ### WEB3 -- Linqs uteis do Blog 
-[INFURA VS JSON RPC: Protocols](infuraVsJRPC.html)
-[ETH JS vs WEB JS: Uma Comparação Detalhada](ethervsweb3.html)
-[GUN JS Real Time Database](GunJS.html)
+[INFURA VS JSON RPC: Protocols](WEB3/infuraVsJRPC.html)
+[ETH JS vs WEB JS: Uma Comparação Detalhada](WEB3/ethervsweb3.html)
+[GUN JS Real Time Database](WEB3/GunJS.html)
+
+### Entity Framework
+[EFCore DataJson Tips](EFCore/EFCoreJson.html)
 \`\`\`
 
      `;
