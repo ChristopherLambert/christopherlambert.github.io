@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETHER.JS VS WEB3.JS</title>
+
+    <!-- Bibliotecas JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="../../../css/blog/blog_main.css">
+    <link rel="stylesheet" href="../../../css/blog/blog_menu.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Blockchain Bridge</h1>
+    </div>
+
+    <div class="container">
+        <div class="markdown" id="markdown-content">
+            <!-- O conteúdo em Markdown será renderizado aqui -->
+        </div>
+        <div id="menu_rigth"></div>
+    </div>
+
+    <script>
+         $("#menu_rigth").load("../blogMenu.html");
+        document.addEventListener("DOMContentLoaded", function() {
+            const markdownContent = `
+### BRIDGE or CRYPTOBRIDGE
+A blockchain bridge is a technology that allows assets or data to be **transferred from one blockchain network to another**. This is essential because different blockchains often operate in isolation, meaning they cannot directly interact with each other. A bridge facilitates interoperability, enabling users to move their tokens or other digital assets seamlessly between different blockchain ecosystems. This enhances the utility and flexibility of cryptocurrencies, as users are not limited to a single blockchain's features or applications. By using a bridge, they can take advantage of the unique benefits offered by multiple blockchain networks.
+
+![Whats a Crypto Bridge?](../../../assets/img/prints/cryptoBridge.png)
+
+**Bridge List:**
+1.a Binance Bridge.
+2. AnySwap
+3. Polygon Bridge.
+
+     `;
+
+            // Converte Markdown para HTML
+            const htmlContent = marked.parse(markdownContent);
+            // Insere o HTML no div
+            document.getElementById("markdown-content").innerHTML = htmlContent;
+
+            // Inicializa o Highlight.js
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+
+</body>
+</html>
