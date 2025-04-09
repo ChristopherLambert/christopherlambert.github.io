@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Transferir USDF</title>
+</head>
+<body>
+  <h2>Transferência de USDF</h2>
+
+  <label>Endereço de destino:</label><br>
+  <input type="text" id="to" placeholder="0x..."><br><br>
+
+  <label>Quantidade (USDF):</label><br>
+  <input type="number" id="amount" placeholder="100"><br><br>
+
+  <button onclick="transfer()">Transferir</button>
+
+  <p id="status"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+  <script>
+    const tokenAddress = "0xe5888c93ede743c3df77f4b9a16a41421a27cf6a";
+    const tokenABI = [
+      {
+        "constant": false,
+        "inputs": [
+          { "name": "to", "type": "address" },
+          { "name": "value", "type": "uint256" }
+        ],
+        "name": "transfer",
+        "outputs": [{ "name": "", "type": "bool" }],
+        "type": "function"
+      }
+    ];
+
+    async function transfer() {
+      if (!window.ethereum) {
+        alert("MetaMask não encontrada!");
+        return;
+      }
+
+      const to = document.getElementById("to").value;
+      const amount = document.getElementById("amount").value;
+      const status = document.getElementById("status");
+
+      if (!to || !amount) {
+        alert("Preencha todos os campos");
+        return;
+      }
+
+      try {
+        const web3 = new Web3(window.ethereum);
+        await window.ethereum.request({ method: "eth_requestAccounts" });
+
+        const accounts = await web3.eth.getAccounts();
+        const sender = accounts[0];
+
+        const contract = new web3.eth.Contract(tokenABI, tokenAddress);
+        const value = web3.utils.toWei(amount, "ether"); // USDF tem 18 casas
+
+        status.innerText = "Enviando...";
+
+        await contract.methods.transfer(to, value).send({ from: sender });
+
+        status.innerText = `✅ Transferência de ${amount} USDF concluída para ${to}`;
+      } catch (err) {
+        console.error(err);
+        status.innerText = "❌ Erro ao transferir. Veja o console.";
+      }
+    }
+  </script>
+</body>
+</html>
