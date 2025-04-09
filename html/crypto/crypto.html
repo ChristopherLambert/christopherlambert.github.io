@@ -1,21 +1,89 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <title>Transferir USDF</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid #444;
+      border-radius: 12px;
+      padding: 30px 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 14px;
+      display: block;
+      margin-top: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 5px;
+      background: #f0f0f0;
+      color: #000;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background: #00ffc8;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00d6aa;
+    }
+
+    #status {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-  <h2>Transferência de USDF</h2>
-
-  <label>Endereço de destino:</label><br>
-  <input type="text" id="to" placeholder="0x..."><br><br>
-
-  <label>Quantidade (USDF):</label><br>
-  <input type="number" id="amount" placeholder="100"><br><br>
-
-  <button onclick="transfer()">Transferir</button>
-
-  <p id="status"></p>
+  <div class="card">
+    <h2>Transferência de USDF</h2>
+    <label>Endereço de destino:</label>
+    <input type="text" id="to" placeholder="0x...">
+    <label>Quantidade (USDF):</label>
+    <input type="number" id="amount" placeholder="100">
+    <button onclick="transfer()">Transferir</button>
+    <div id="status"></div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
   <script>
@@ -34,38 +102,37 @@
     ];
 
     async function transfer() {
-      if (!window.ethereum) {
-        alert("MetaMask não encontrada!");
-        return;
-      }
-
       const to = document.getElementById("to").value;
       const amount = document.getElementById("amount").value;
       const status = document.getElementById("status");
 
+      if (!window.ethereum) {
+        alert("MetaMask não detectada!");
+        return;
+      }
+
       if (!to || !amount) {
-        alert("Preencha todos os campos");
+        alert("Preencha todos os campos!");
         return;
       }
 
       try {
         const web3 = new Web3(window.ethereum);
         await window.ethereum.request({ method: "eth_requestAccounts" });
-
         const accounts = await web3.eth.getAccounts();
         const sender = accounts[0];
 
         const contract = new web3.eth.Contract(tokenABI, tokenAddress);
-        const value = web3.utils.toWei(amount, "ether"); // USDF tem 18 casas
+        const value = web3.utils.toWei(amount, "ether");
 
-        status.innerText = "Enviando...";
+        status.innerText = "⏳ Enviando transação...";
 
         await contract.methods.transfer(to, value).send({ from: sender });
 
-        status.innerText = `✅ Transferência de ${amount} USDF concluída para ${to}`;
+        status.innerText = `✅ Enviado ${amount} USDF para ${to}`;
       } catch (err) {
         console.error(err);
-        status.innerText = "❌ Erro ao transferir. Veja o console.";
+        status.innerText = "❌ Erro: " + (err.message || "Falha ao enviar");
       }
     }
   </script>
