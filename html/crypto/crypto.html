@@ -104,9 +104,18 @@
         return;
       }
 
+      // if (!window.ethereum) {
+      //   Swal.fire("Erro", "MetaMask não está conectada!", "error");
+      //   return;
+      // }
       if (!window.ethereum) {
-        Swal.fire("Erro", "MetaMask não está conectada!", "error");
-        return;
+          Swal.fire({
+            icon: "error",
+            title: "MetaMask não encontrada",
+            html: 'Você precisa instalar a <b>MetaMask</b> para usar esta aplicação.<br><br><a href="https://metamask.io/download.html" target="_blank">Clique aqui para instalar</a>',
+            confirmButtonText: "Entendi",
+          });
+       return;
       }
 
       try {
