@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Transferir USDF</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     body {
       margin: 0;
@@ -66,12 +67,6 @@
     button:hover {
       background: #00d6aa;
     }
-
-    #status {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 14px;
-    }
   </style>
 </head>
 <body>
@@ -82,7 +77,6 @@
     <label>Quantidade (USDF):</label>
     <input type="number" id="amount" placeholder="100">
     <button onclick="transfer()">Transferir</button>
-    <div id="status"></div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
@@ -104,15 +98,14 @@
     async function transfer() {
       const to = document.getElementById("to").value;
       const amount = document.getElementById("amount").value;
-      const status = document.getElementById("status");
 
-      if (!window.ethereum) {
-        alert("MetaMask não detectada!");
+      if (!to || !amount) {
+        Swal.fire("Atenção", "Preencha todos os campos!", "warning");
         return;
       }
 
-      if (!to || !amount) {
-        alert("Preencha todos os campos!");
+      if (!window.ethereum) {
+        Swal.fire("Erro", "MetaMask não está conectada!", "error");
         return;
       }
 
@@ -125,14 +118,22 @@
         const contract = new web3.eth.Contract(tokenABI, tokenAddress);
         const value = web3.utils.toWei(amount, "ether");
 
-        status.innerText = "⏳ Enviando transação...";
+        Swal.fire({
+          title: "Enviando...",
+          html: `Transferindo <b>${amount} USDF</b> para <br><code>${to}</code>`,
+          allowOutsideClick: false,
+          didOpen: () => {
+            Swal.showLoading();
+          }
+        });
 
         await contract.methods.transfer(to, value).send({ from: sender });
 
-        status.innerText = `✅ Enviado ${amount} USDF para ${to}`;
+        Swal.fire("Sucesso!", `✅ ${amount} USDF enviado para ${to}`, "success");
+
       } catch (err) {
         console.error(err);
-        status.innerText = "❌ Erro: " + (err.message || "Falha ao enviar");
+        Swal.fire("Erro", err.message || "Falha na transação", "error");
       }
     }
   </script>
